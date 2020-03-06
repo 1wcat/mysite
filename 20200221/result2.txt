@@ -1,0 +1,4 @@
+
+A03       Charlie   M         70.5      180.0     
+A02       Alice     F         48.1      170.0     
+A10       Easter    M         160       65        

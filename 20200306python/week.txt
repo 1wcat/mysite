@@ -1,0 +1,6 @@
+name   M  Tu   W  Th   F   S  wage
+Amy    2   4   3   4   3   3  250
+Bob    0   0   0   0   0   0  200
+Casey  5   0   2   2   6   5  220
+David  3   3   5   5   0   2  250
+Eric   0   6   0   5   2   2  300

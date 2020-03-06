@@ -1,0 +1,4 @@
+Class A
+A01       Bob       M         0         0         
+A03       Charlie   M         0         0         
+A02       Alice     F         0         0         

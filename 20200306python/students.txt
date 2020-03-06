@@ -1,0 +1,4 @@
+StoneCampus A
+A01,Bob,M,160,67.6
+A03,Charlie,M,180,70.5
+A02,Alice,F,170,48.1

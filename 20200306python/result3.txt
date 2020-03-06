@@ -1,0 +1,4 @@
+StoneCampus A
+A01       Bob       M              160.0      67.6     26.41
+A03       Charlie   M              180.0      70.5     21.76
+A02       Alice     F              170.0      48.1     16.64

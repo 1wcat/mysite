@@ -1,0 +1,6 @@
+name  weight  capacity  mileage  price
+car1  300     4         15000   700000
+car2  500     5         43000   300000
+car3  450     4         70000   250000
+car4  550     5         65000   270000
+car5  1200    8         35000   350000

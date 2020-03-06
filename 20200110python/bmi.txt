@@ -1,0 +1,5 @@
+Name    Gender Height  Weight
+Bob       M     155     67.6
+Alice     F     170     48.1
+Charlie   M     180     70.5
+Ashley    F     165     40.1
