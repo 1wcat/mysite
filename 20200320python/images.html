@@ -7,7 +7,9 @@
     <body>
         {% for title in titles %}
        <h1>name: {{ image.title }} </h1>
-       <img src="{{ image.url }}">
+       <a bref = "{{image.href}}">
+           <img src="{{ image.url }}">
+       </a>
        {% endfor %}
    </body>
 </html>
