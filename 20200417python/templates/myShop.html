@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to MyShop</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Welcome to MyShop</h1>
+    <ul>
+      {% for key, prod in products.items() %}
+      <li>
+        <img src=" {{prod.image}} " style="width: 100px">
+        <a href="/product/{{prod.id}}">{{prod.name}}</a></li>
+      {% endfor %}
+    </ul>
+
+    <h2>Cart</h2>
+    <ul>
+        {% for key, num in cart.items() %}
+        <li>{{key}} {{products.get(key).name}} x {{num}} = {{products.get(key).price * num}}</li>
+        {% endfor %} 
+    </ul>
+    <h2>Total: {{ total }}</h2>
+  </body>
+</html>
