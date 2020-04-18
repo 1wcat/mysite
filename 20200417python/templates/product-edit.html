@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyShop - {{product.name}} - Edit</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1><a href="/">MyShop</a>
+        - <a href="/product/{{product.id}}">{{product.name}}</a>
+    </h1>
+
+    <form action="/product/{{product.id}}/edit" method="post">
+        <div>
+          <label for="name">Name:</label>
+          <input id="name" type="text" name="name" value="{{product.name}}">
+        </div>
+        <div>
+          <label for="pricce">Price:</label>
+          <input id="price" type="text" name="price" value="{{product.price}}">
+        </div>
+        <div>
+          <label for="desc">Description:</label>
+          <input id="desc" type="text" name="desc" value="{{product.desc}}">
+        </div>
+        <div>
+            <label for="image">Image:</label>
+            <input id="image" type="text" name="image" value="{{product.image}}">
+          </div>
+        <p><button type="submit">Submit</button></p>
+    </form>
+  </body>
+</html>

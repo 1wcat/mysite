@@ -15,6 +15,7 @@
     </ul>
 
     <h2>Cart</h2>
+    <a href="/cart/edit">Cart Edit</a>
     <ul>
         {% for key, num in cart.items() %}
         <li>{{key}} {{products.get(key).name}} x {{num}} = {{products.get(key).price * num}}</li>

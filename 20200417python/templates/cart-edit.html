@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to MyShop</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Cart Edit</h1>
+    <form action="/cart/edit" method="post">
+      <div>
+        <label for="pen">Pen:</label>
+        <input id="pen" type="text" name="pen" value="{{cart['sku01']}}">
+      </div>
+      <div>
+        <label for="cup">Cup:</label>
+        <input id="cip" type="text" name="cup" value="{{cart['sku02']}}">
+      </div>
+      <p><button type="submit">Submit</button></p>
+    </form>
+  </body>
+</html>
