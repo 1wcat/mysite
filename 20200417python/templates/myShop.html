@@ -10,7 +10,7 @@
       {% for key, prod in products.items() %}
       <li>
         <img src=" {{prod.image}} " style="width: 100px">
-        <a href="/product/{{prod.id}}">{{prod.name}}</a></li>
+        <a href="/product/{{prod.id}}">{{prod.name}} ${{prod.price}}</a></li>
       {% endfor %}
     </ul>
 
