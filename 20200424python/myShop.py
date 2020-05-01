@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask import request, redirect
-import sqlite3
+import sqlite3 
 
 import sqlite_test
 
@@ -12,4 +12,4 @@ def myshop():
     pds = sqlite_test.select_products(conn)
     print(pds)
 
-    return render_template("myShop.html", products=pds)
+    return render_template("myshop.html", products=pds)

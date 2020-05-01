@@ -2,40 +2,40 @@ import sqlite3
 conn = sqlite3.connect('myshop.db')
 
 def create_table(conn):
-    c = conn.cursor()
-    sql = """
-        CREATE TABLE products (
-            id INTEGER PRIMARY KEY,
-            name TEXT NOT NULL,
-            price REAL NOT NULL,
-            qty INTEGER NOT NULL
-        )
-    """
-    c.execute(sql)
-    conn.commit()
-    #conn.close()
+  c = conn.cursor()
+  sql = """
+    CREATE TABLE products (
+      id INTEGER PRIMARY KEY,
+      name TEXT NOT NULL,
+      price REAL NOT NULL,
+      qty INTEGER NOT NULL
+    )
+  """
+  c.execute(sql)
+  conn.commit()
+  #conn.close()
 
 def insert_product(conn, name, price, qty):
-    c = conn.cursor()
-    sql = """
+  c = conn.cursor()
+  sql = """
     INSERT INTO products (name, price, qty)
     VALUES (?, ?, ?)
-    """
-    #c.execute(sql, ('Pen', 15, 45))
-    #c.execute(sql, ('Cup', 80, 5))
-    #c.execute(sql, ('Notebook', 25, 20))
-    c.execute(sql, (name, price, qty))
-    conn.commit()
+  """
+  #c.execute(sql, ('Pen', 15, 45))
+  #c.execute(sql, ('Cup', 80, 5))
+  #c.execute(sql, ('Notebook', 25, 20))
+  c.execute(sql, (name, price, qty))
+  conn.commit()
 
 def select_products(conn):
-    c = conn.cursor()
-    sql = "SELECT id, name, price, qty FROM products"
-    c.execute(sql)
-    pds = c.fetchall()
-    for pd in pds:
-        print('{:10}{:>10}{:10}{:10}'.format(pd[0], pd[1], pd[2], pd[3]))
-    return pds
-    
+  c = conn.cursor()
+  sql = "SELECT id, name, price, qty FROM products"
+  c.execute(sql)
+  pds = c.fetchall()
+  for pd in pds:
+    print('{:10}{:>10}{:10}{:10}'.format(pd[0], pd[1], pd[2], pd[3]))
+  return pds
+
 def update_product(conn, id, price, qty):  
     sql = """
         UPDATE products
@@ -48,12 +48,12 @@ def update_product(conn, id, price, qty):
     conn.commit()
 
 def delete_product(conn, id):
-    sql="""
-        DELETE FROM products WHERE id = ?
-    """
-    c = conn.cursor()
-    c.execute(sql, (id,))
-    conn.commit
+  sql="""
+    DELETE FROM products WHERE id = ?
+  """
+  c = conn.cursor()
+  c.execute(sql, (id,))
+  conn.commit()
 
 #create_table(conn)
 #insert_product(conn, 'Card', 5, 10)
