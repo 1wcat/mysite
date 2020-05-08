@@ -34,6 +34,8 @@ products = {
       },
 }
 
+mycart = {}
+
 @app.route("/")
 def myshop():
     return render_template("myshop.html", products=products)
@@ -45,13 +47,29 @@ def product(id):
 
 @app.route("/cart")
 def cart():
-    return render_template("cart.html")
+    total = 0
+    for id, num in mycart.items():
+        pd = products[id]
+        total += pd['price'] * num
+
+    return render_template("cart.html", mycart=mycart, product=products, total=total)
 
 @app.route("/add-cart/<id>")
 def addCart(id):
-    print(id)
-    cart['sku01'] = pen
-    cart['sku02'] = cup
-    cart['sku03'] = notebook
-    cart['sku04'] = stapler
+    mycart[id] = mycart.get(id, 0) + 1
     return redirect('/cart')
+
+@app.route('/add-product', methods = ['GET', 'POST'])
+def addProduct():
+  if request.method == 'POST':
+    name = request.form.get('name')
+    price = request.form.get('price')
+    products['sku' + str(len(products))] = { 
+      'name': name, 
+      'price': price
+    }
+    return redirect('/')
+
+  return render_template('add-product.html')
+ 
+
