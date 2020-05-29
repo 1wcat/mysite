@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+
+{% block main_wrapper %}
+<div class= "container">
+    {% if user and user.get('uid') %}
+        <h1> Hello {{ user.name }}, welcome to MyWeb!</h1>
+    {% else %}
+        <h1>Welcome to MyWeb!</h1>
+    {% endif %}
+    <h1>{{ counter_msg }}</h1>
+</div>
+{% endblock %}

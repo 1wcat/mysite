@@ -1,0 +1,18 @@
+{% extends './base.html' %}
+
+{% block main_wrapper %}
+<div class="container">
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <div class="form-group">
+          <label for="uid">User Id</label>
+          <input type="text" class="form-control" id="uid" name='uid'>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name='password'>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

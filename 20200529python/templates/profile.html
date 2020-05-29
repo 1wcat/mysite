@@ -1,0 +1,13 @@
+{% extends './base.html' %}
+
+{% block main_wrapper %}
+<div class="container">
+    <form action="/profile" method="POST">
+        <h1>Profile</h1>
+        <h3>Name: {% name %} </h3>
+        <h3>Username: "uid"</h3>
+        <h3>Password: "password"</h3>
+        <h3>Email: "email"</h3>
+    </form>
+</div>
+{% endblock %}
