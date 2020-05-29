@@ -1,5 +1,11 @@
 from flask import Flask, render_template
 from flask import request, redirect
+import sqlite3
+from flask import g
+
+import shopdb
+
+DATABASE = 'myshop.db'
 
 app = Flask(__name__)
 
@@ -36,8 +42,32 @@ products = {
 
 mycart = {}
 
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DATABASE)
+    return db
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
+
 @app.route("/")
 def myshop():
+    conn = get_db()
+    pds = shopdb.select_products(conn)
+    products = {}
+    for pd in pds:
+        sid, name, price, desc, img = pd
+        products[sid] = {
+            'id': sid,
+            'name': name,
+            'price': price,
+            'desc': desc,
+            'image': img
+        }
     return render_template("myshop.html", products=products)
 
 @app.route("/product/<id>")
@@ -64,12 +94,54 @@ def addProduct():
   if request.method == 'POST':
     name = request.form.get('name')
     price = request.form.get('price')
+    desc = request.form.get('desc')
+    img = request.form.get('image')
+
+    conn = get_db()
+    shopdb.insert_product(conn, name, float(price), desc, img)
+
+    '''
     products['sku' + str(len(products))] = { 
       'name': name, 
-      'price': price
+      'price': price,
+      'desc': desc,
+      'image': img
     }
+    '''
     return redirect('/')
 
   return render_template('add-product.html')
+
+@app.route('/update-product/<sid>', methods = ['GET', 'POST'])
+def updateProduct(sid):
+    conn = get_db()
+    pd = shopdb.select_by_id(conn, sid)
+    sid, name, price, desc, image = pd
+    product = {'id':sid, 'name':name, 'price':price, 'desc':desc, "image":image}
+
+    if request.method == 'POST':
+        name = request.form.get('name')
+        price = request.form.get('price')
+        desc = request.form.get('desc')
+        img = request.form.get('image')
+
+        conn = get_db()
+        shopdb.insert_product(conn, sid, name, float(price), desc, img)
+        return redirect('/')
+
+        
+        '''
+        products['sku' + str(len(products))] = { 
+        'name': name, 
+        'price': price,
+        'desc': desc,
+        'image': img
+        }
+        '''
+        conn = get_db()
+        shopdb.update_product(conn, sid, name, float(price), desc, img)
+        return redirect('/')
+
+    return render_template('update-product.html', product=product)
  
 

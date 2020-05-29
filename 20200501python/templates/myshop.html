@@ -6,8 +6,9 @@
 </div>
 
 <div class="container">
-  <div class="card-deck mb-3 text-center">
+  <div class="row mb-3 text-center">
     {% for ley, pd in products.items() %}
+    <div class="col-md-3">
     <div class="card mb-4 shadow-sm">
       <a href="product/{{pd.id}}">
       <img src="{{pd.image}}" class="card-img-top" style ='height:150px;'>
@@ -16,15 +17,16 @@
         <h4 class="my-0 font-weight-normal">{{pd.name}}</h4>
       </div>
       <div class="card-body">
-        <h1 class="card-title pricing-card-title">${{pd.price}}</h1>
+        <h1 class="card-title pricing-card-title">NTD:${{pd.price}}</h1>
         <ul class="list-unstyled mt-3 mb-4">
         <p>{{pd.desc}}</p>
         </ul>
         <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+        <a class="btn btn-primary btn-sm" href="/update-product/{{pd.id}}">Update</a>
       </div>
     </div>
+    </div>
     {% endfor %}
-  
   </div>
 </div>
 {% endblock %}
